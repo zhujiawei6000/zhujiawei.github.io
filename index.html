@@ -4,10 +4,50 @@ title: {{ site.name }}
 ---
 
 <div id="home">
-  <h1>Blog Posts</h1>
-  <ul class="posts">
+  <!-- <h1>Blog Posts</h1> -->
+  <!-- <ul class="posts"> -->
     {% for post in site.posts %}
-      <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
+      <!-- <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li> -->
+      <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+
+        <div class="main-content" itemprop="articleBody">
+    
+    <!-- <a name="blog1"></a> -->
+    
+      <header class="post-header">
+          <a class="post-link" href="{{ post.url }}"><h3 class="post-title" itemprop="name headline">{{ post.title }}</h3> </a>
+    
+      </header>
+    
+        {{ post.brief }}
+    
+    <p class="post-meta" style="text-align: right; color: rgb(152,152,152);"><time datetime="{{ post.date }}" itemprop="datePublished">{{ post.date | date_to_string }}</time> • <label for="our-popup-1"><i class="fa fa-share"></i> Share / Permalink</label></p>
+    
+    <span>
+      <input type="checkbox" id="our-popup-1" class="smoosh" />
+  
+      <!-- invisible; when checked, the popup opens -->
+      <label for="our-popup-1" class="overlay"></label>
+  
+      <!-- the popup starts here -->
+      <div class="overlay-dialogue">
+        <h3>Share "{{ post.title }}"</h3>
+  
+              <!-- Target -->
+  <input id="foo1" value="{{ site.baseurl }}{{ post.url }}" type="url">
+  
+  <!-- Trigger -->
+  <button class="share-btn" data-clipboard-target="#foo1">COPY LINK
+  </button>
+              <p style="text-align: center;">Share on: <a href="https://www.facebook.com/sharer/sharer.php?u={{ site.baseurl }}{{ post.url }}" target="_blank">Facebook</a> • <a href="https://twitter.com/share?url={{ site.baseurl }}{{ post.url }}&amp;text={{post.title}}" target="_blank">Twitter</a>
+  
+        <p style="text-align: center;"><label for="our-popup-1">cancel</label></p>
+      </div>
+    </span>
+    
+      </div>
+    
+    </article>
     {% endfor %}
-  </ul>
+  <!-- </ul> -->
 </div>

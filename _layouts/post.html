@@ -1,7 +1,11 @@
 ---
 layout: default
 ---
-<h2>{{ page.title }}</h2>
-<p class="meta">{{ page.date | date_to_string }}</p>
+<header class="post-header">
+    <h1 class="post-title" itemprop="name headline">{{page.title}}</h1>
+    <p class="post-meta"><time datetime="{{page.date}}" itemprop="datePublished">{{ page.date | date_to_string }}</time></p>
+  </header>
+  <p>{{page.brief}}</p>
+  <!-- <p class="meta">{{ page.date | date_to_string }}</p> -->
 
 {{ content }}
