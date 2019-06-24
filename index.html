@@ -34,12 +34,12 @@ title: {{ site.name }}
         <h3>Share "{{ post.title }}"</h3>
   
               <!-- Target -->
-  <input id="foo1" value="{{ site.baseurl }}{{ post.url }}" type="url">
+  <input id="foo1" value="{{ site.url }}{{ post.url }}" type="url">
   
   <!-- Trigger -->
   <button class="share-btn" data-clipboard-target="#foo1">COPY LINK
   </button>
-              <p style="text-align: center;">Share on: <a href="https://www.facebook.com/sharer/sharer.php?u={{ site.baseurl }}{{ post.url }}" target="_blank">Facebook</a> • <a href="https://twitter.com/share?url={{ site.baseurl }}{{ post.url }}&amp;text={{post.title}}" target="_blank">Twitter</a>
+              <p style="text-align: center;">Share on: <a href="https://www.facebook.com/sharer/sharer.php?u={{ site.url }}{{ post.url }}" target="_blank">Facebook</a> • <a href="https://twitter.com/share?url={{ site.url }}{{ post.url }}&amp;text={{post.title}}" target="_blank">Twitter</a>
   
         <p style="text-align: center;"><label for="our-popup-1">cancel</label></p>
       </div>
