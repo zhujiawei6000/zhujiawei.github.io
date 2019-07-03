@@ -7,7 +7,8 @@ brief: "This is my approach to install docker compose on Jetson TX2."
 ---
 
 # Prerequisite
-    * JetPack 3.3 or above
+    JetPack 3.3 or above
+    
 # Install Docker
     1. install dependencies
     ```shell
