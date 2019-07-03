@@ -14,11 +14,11 @@ JetPack 3.3 or above
 ```shell
 sudo apt-get update
 sudo apt-get install \
-apt-transport-https \
-ca-certificates \
-curl \
-gnupg-agent \
-software-properties-common
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    gnupg-agent \
+    software-properties-common
 ```
 2. add apt-get source
 ```shell
@@ -43,8 +43,8 @@ sudo usermod -aG docker nvidia
 1. install dependencies
 ```shell
 sudo apt install python-pip libffi-dev libssl-dev
-Notes: if you encounter `cannot locate python-pip` error, this may due to missing some apt-get source. You can edit /etc/apt/source.list, and append 'universe multiverse' to each line contains url.
 ```
+Notes: if you encounter `cannot locate python-pip` error, this may due to missing some apt-get source. You can edit /etc/apt/source.list, and append 'universe multiverse' to each line contains url.
 2. install
 ```shell
 sudo pip install docker-compose
