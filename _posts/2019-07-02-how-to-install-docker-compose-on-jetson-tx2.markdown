@@ -11,51 +11,51 @@ JetPack 3.3 or above
     
 # Install Docker
 1. install dependencies
-```shell
-sudo apt-get update
-sudo apt-get install \
-    apt-transport-https \
-    ca-certificates \
-    curl \
-    gnupg-agent \
-    software-properties-common
-```
+    ```shell
+    sudo apt-get update
+    sudo apt-get install \
+        apt-transport-https \
+        ca-certificates \
+        curl \
+        gnupg-agent \
+        software-properties-common
+    ```
 2. add apt-get source
-```shell
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-sudo apt-key fingerprint 0EBFCD88
-sudo add-apt-repository \
-    "deb [arch=arm64] https://download.docker.com/linux/ubuntu \
-    $(lsb_release -cs) \
-    stable"
-```
+    ```shell
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+    sudo apt-key fingerprint 0EBFCD88
+    sudo add-apt-repository \
+        "deb [arch=arm64] https://download.docker.com/linux/ubuntu \
+        $(lsb_release -cs) \
+        stable"
+    ```
 3. install
-```shell
-sudo apt-get update
-sudo apt-get install docker-ce docker-ce-cli containerd.io
-```
+    ```shell
+    sudo apt-get update
+    sudo apt-get install docker-ce docker-ce-cli containerd.io
+    ```
 4. add user to docker group (optional)
-```shell
-sudo usermod -aG docker nvidia
-```
-> Notes: You need to logout & login to take effect.
+    ```shell
+    sudo usermod -aG docker nvidia
+    ```
+    > Notes: You need to logout & login to take effect.
 
     
 # Install Docker Compose
 1. install dependencies
-```shell
-sudo apt install python-pip libffi-dev libssl-dev
-```
-> Notes: if you encounter `cannot locate python-pip` error, this may due to missing some apt-get source. You can edit  /etc/apt/source.list, and append 'universe multiverse' to each line contains url.
+    ```shell
+    sudo apt install python-pip libffi-dev libssl-dev
+    ```
+    > Notes: if you encounter `cannot locate python-pip` error, this may due to missing some apt-get source. You can edit  /etc/apt/source.list, and append 'universe multiverse' to each line contains url.
 2. setup locale
-```shell
-export LC_ALL="en_US.UTF-8"
-export LC_CTYPE="en_US.UTF-8"
-sudo dpkg-reconfigure locales
-```
+    ```shell
+    export LC_ALL="en_US.UTF-8"
+    export LC_CTYPE="en_US.UTF-8"
+    sudo dpkg-reconfigure locales
+    ```
 3. install
-```shell
-sudo pip install docker-compose
-```
+    ```shell
+    sudo pip install docker-compose
+    ```
 
 
