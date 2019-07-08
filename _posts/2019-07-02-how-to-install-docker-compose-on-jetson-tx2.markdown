@@ -38,6 +38,8 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io
 ```shell
 sudo usermod -aG docker nvidia
 ```
+Notes: You need to logout & login to take effect.
+
     
 # Install Docker Compose
 1. install dependencies
@@ -45,7 +47,13 @@ sudo usermod -aG docker nvidia
 sudo apt install python-pip libffi-dev libssl-dev
 ```
 Notes: if you encounter `cannot locate python-pip` error, this may due to missing some apt-get source. You can edit /etc/apt/source.list, and append 'universe multiverse' to each line contains url.
-2. install
+2. setup locale
+```shell
+export LC_ALL="en_US.UTF-8"
+export LC_CTYPE="en_US.UTF-8"
+sudo dpkg-reconfigure locales
+```
+3. install
 ```shell
 sudo pip install docker-compose
 ```
