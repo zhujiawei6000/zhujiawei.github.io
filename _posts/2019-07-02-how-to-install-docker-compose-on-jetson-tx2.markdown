@@ -2,7 +2,7 @@
 layout: post
 title:  "How to Install Docker Compose on Jetson TX2"
 date:   2019-06-28 15:31:00
-categories: main
+categories: jetson-tx2
 brief: "This is my approach to install docker compose on Jetson TX2."
 ---
 
