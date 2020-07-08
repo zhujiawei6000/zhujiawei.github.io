@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Comprehensive CMake Tutorial"
-date:   2019-06-28 15:31:00
+date:   2020-07-8 14:58:00
 categories: cmake
 brief: "A CMake tutorial by example"
 ---
