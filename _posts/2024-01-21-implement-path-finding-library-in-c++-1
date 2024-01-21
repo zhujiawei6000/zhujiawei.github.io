@@ -21,7 +21,7 @@ I will break all the implementation to the following parts
 
 Besides the above, we also have one example，which put all the thing together. The full code is available on my github https://github.com/zhujiawei6000/path_finding. Let's dive to the detail.
 
-![path-finding-demo](/img/2024-01-21_1.gif){:class="img-responsive"}
+![path-finding-demo](img/2024-01-21_1.gif)
 
 ## Graph
 
