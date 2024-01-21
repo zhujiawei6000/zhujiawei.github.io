@@ -21,6 +21,8 @@ I will break all the implementation to the following parts
 
 Besides the above, we also have one example，which put all the thing together. The full code is available on my github https://github.com/zhujiawei6000/path_finding. Let's dive to the detail.
 
+![path-finding-demo](/img/2024-01-21_1.gif){:class="img-responsive"}
+
 ## Graph
 
 graph is a common form of a map. The key concept of graph is node(vetex) and edge. In a simple word, the node represent a place on the map, and the edge represent the road connection. Each edge also has a weight, means the distance between two nodes. Here's the code.
