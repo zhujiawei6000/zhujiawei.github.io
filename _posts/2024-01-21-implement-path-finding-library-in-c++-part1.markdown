@@ -136,7 +136,7 @@ std::vector<NodeId> Dijkstra(const Graph& graph, NodeId start,
   }
   ```
 
-  ## GraphBuilder
+## GraphBuilder
 
   To make the example work, we should also build a map by ourself. To make the work a little bit earsier, I wrote the GraphBuilder class.
 
