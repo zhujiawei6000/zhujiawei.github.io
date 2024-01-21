@@ -69,5 +69,98 @@ class Graph {
   
 We also add ```ForEachEdge(NodeId key, EdgeVisitorT&& visitor)``` function as accessor for the internal data. The function find the adjacencies of the given node and apply visitor to all the adjacencies.
 
-To be continued...
+## Search Context
+Search context is used in the searching stage. It's contains 2 main parts. One is current available transitions which may changed throughout the searching. Another is visited nodes which used in the algorithm to prevent duplicating and we also store the previous node to backtrace the path when we reach the goal.
 
+We use ```std::priority_queue<Transition, std::vector<Transition>, std::greater<Transition>>``` here instead of std::queue, becasue it supply better performance to draw the shortest transition in the current iteration.
+
+
+In the ```Reset(NodeId s, NodeId e)``` function, we push the start node to the transition queue for the iteration step in the next section
+```
+
+class SearchContext {
+    NodeId goal_;
+    std::map<NodeId, NodeId> visited_;
+    std::priority_queue<Transition, std::vector<Transition>, std::greater<Transition>> transitions_;
+public:
+    void Reset(NodeId s, NodeId e) {
+        goal_ = e;
+        visited_.clear();
+        while (!transitions_.empty()) transitions_.pop();
+        //  Mark the starting vertex with a distance of zero. Designate this vertex as current.
+        Enqueue(s, s, 0);
+    }
+    ...
+};
+```
+
+## Dijkstra Algorithm
+
+The basic of the algorithm is very simple, here is key points quoted from the other sites
+> - Dijkstra's Algorithm basically starts at the node that you choose (the source node) and it analyzes the graph to find the shortest path between that node and all the other nodes in the graph.
+> - The algorithm keeps track of the currently known shortest distance from each node to the source node and it updates these values if it finds a shorter path.
+> - Once the algorithm has found the shortest path between the source node and another node, that node is marked as "visited" and added to the path.
+>- The process continues until all the nodes in the graph have been added to the path. This way, we have a path that connects the source node to all other nodes following the shortest path possible to reach each node.
+
+It takes me a while to implement it right, here is the sample C++ code. Just a while loop and some lines of code. Most of work was done in the sections above
+
+```
+std::vector<NodeId> Dijkstra(const Graph& graph, NodeId start,
+                                        NodeId end) {
+  SearchContext context;
+  // Mark the ending vertex with a distance of zero.
+  context.Reset(start, end);
+  bool solved = false;
+  while (context.QueueIsNotEmpty()) {
+    // Designate this vertex as current.
+    auto [curr_node, prev_node, cost] = context.Dequeue();
+    if (context.IsVisited(curr_node)) {
+        continue;
+    }
+    context.MarkVisited(prev_node, curr_node);
+    if (context.IsTerminal(curr_node)) {
+      solved = true;
+      break;
+    }
+    graph.ForEachEdge(curr_node, [&context, curr_node, cost](
+                                     NodeId nid, const EdgeProperties& props) {
+      // Don’t record this distance if it is longer than a previously recorded
+      // distance.
+      if (!context.IsVisited(nid)) {
+        context.Enqueue(nid,               // curr node
+                        curr_node,         // prev
+                        props.cost + cost  // cost
+        );
+      }
+    });
+  }
+  ```
+
+  ## GraphBuilder
+
+  To make the example work, we should also build a map by ourself. To make the work a little bit earsier, I wrote the GraphBuilder class.
+
+  I make it a friend class of Graph to access its data member without breaking the encapsulating. ```Link(NodeId from, NodeId to, CostType cost)``` responsible for create connection and ``` Node(NodeId id, std::string name="")``` use to create the nodes
+
+  ```
+class GraphBuilder {
+  Graph& graph_;
+public:
+  explicit GraphBuilder(Graph& graph) : graph_{graph} {}
+
+  void Link(NodeId from, NodeId to, CostType cost) {
+    auto& nodes = graph_.nodes_;
+    assert(nodes.find(from) != nodes.end() &&
+           nodes.find(to) != nodes.end());
+    graph_.adjacencies_.emplace(from, std::make_pair(to, pf::EdgeProperties{cost}));
+  };
+  void Node(NodeId id, std::string name="") {
+    auto& nodes = graph_.nodes_;
+    assert(nodes.find(id) == nodes.end());
+    nodes.emplace(id, pf::NodeProperties{name});
+  }
+};
+```
+
+## Summary
+In this part we implemented the basic path finding algorithm Dijkstras. Although it's not suitable for the production needed due to performance hit, it's still a good start to optimize it further.
