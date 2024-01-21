@@ -19,9 +19,9 @@ I will break all the implementation to the following parts
 - SearchContext - Provide all the intermedia data needed in one search procedure
 - Algorithm - The main logic of the path finding algorithm
 
-Besides the above, we also have one example，which put all the thing together. The full code is available on my github https://github.com/zhujiawei6000/path_finding. Let's dive to the detail.
+Besides the above, we also have one example，which put all the thing together. The full code is available on my github [https://github.com/zhujiawei6000/path_finding](https://github.com/zhujiawei6000/path_finding). Let's dive to the detail.
 
-![path-finding-demo](img/2024-01-21_1.gif)
+![path-finding-demo]({{ site.baseurl }}/img/2024-01-21_1.gif)
 
 ## Graph
 
