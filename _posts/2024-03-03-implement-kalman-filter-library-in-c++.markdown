@@ -6,7 +6,7 @@ categories: C++
 brief: "Kalman filter is a very commonly used filter in many domain, such as tracking, signal processing, etc. Before we learn its variants like EKF, UKF, PF, we should master kalman filter in the first place. So in this post, I try to implement kalman filter by myself with C++ ..."
 ---
 
-# Inroduction
+# Introduction
 Kalman filter is a very commonly used filter in many domain, such as tracking, signal processing, etc. Before we learn its variants like EKF, UKF, PF, we should master kalman filter in the first place. So in this post, I try to implement kalman filter by myself with C++. The full code is available on https://github.com/zhujiawei6000/kalman_filter. The common process of the kalman filter can be shown in the following diagram. Let's review it step by step:
 
 1. We calculate kalman gain K with errors in both measurement and estimate, the kalman gain means how much we can trust the measurement and the predicted value. The range of K is between 0 and 1. When K is large (close to 1), we can trust more on measurements. When K is small (close to 0), we can trust more on estimates.
